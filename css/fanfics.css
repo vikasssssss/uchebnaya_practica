@@ -1,0 +1,47 @@
+        .content {
+            padding: 40px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #C6C6C6;
+        }
+
+        .fanfic-item {
+            background-color: rgba(61, 13, 10, 0.85);
+            border: 2px solid #7D0F1D;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0; 
+            width: 100%; 
+            text-align: center;
+        }
+
+        /* ЗАГАЛОВОК В РАМКЕ */
+        .fanfic-item h3 {
+            color: #C6C6C6; 
+            margin-bottom: 15px;
+            font-size: 1.1em; 
+        }
+
+        .read-btn {
+            display: inline-block;
+            padding: 10px 24px;
+            background-color: #7D0F1D;
+            color: #F2F2F2;
+            text-decoration: none;
+            border: 2px solid #7D0F1D;
+            border-radius: 10px;
+            font-weight: bold;
+            font-size: 0.9em; 
+            transition: all 0.3s ease;
+        }
+
+        .read-btn:hover {
+            background-color: #D60000;
+            color: #F2F2F2;
+            transform: scale(1.03);
+        }

@@ -1,0 +1,113 @@
+        .content {
+            padding: 40px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            color: #C6C6C6;
+            text-align: center;
+            margin-bottom: 30px
+        }
+
+        .pair-section {
+            background-color: rgba(61, 13, 10, 0.85);
+            border: 2px solid #7D0F1D;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0 40px;
+        }
+
+        .pair-section summary {
+            font-size: 1.3em;
+            font-weight: bold;
+            cursor: pointer;
+            color: #C6C6C6;
+            padding: 10px 0;
+            outline: none;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .pair-section summary::-webkit-details-marker,
+        .pair-section summary::marker {
+            display: none;
+        }
+
+         .pair-section summary::after {
+            content: "▼";
+            color: #C6C6C6;
+            font-size: 18px;
+        }
+
+        .pair-section[open] summary {
+            color: #7D0F1D;
+        }
+
+        .pair-section[open] summary::after {
+            content: "▲";
+        }
+
+        /* Описание под заголовком */
+        .pair-section > p {
+            color: #C6C6C6;
+            margin: 10px 0;
+        }
+
+        /* Стили для комментариев */
+        .comments-list {
+            margin: 15px 0;
+            padding-top: 15px;
+            border-top: 1px solid #7D0F1D;
+        }
+
+        .comment {
+            margin: 10px 0;
+            padding: 8px 0;
+            color: #C6C6C6;
+            font-size: 0.95em;
+        }
+
+        .comment-author {
+            font-weight: bold;
+            color: #D60000;
+        }
+
+        /* Форма добавления комментария */
+        .comment-form {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #7D0F1D;
+        }
+
+        .comment-form input,
+        .comment-form textarea {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            background: #2A2A2A;
+            border: 1px solid #7D0F1D;
+            color: #C6C6C6;
+            border-radius: 4px;
+        }
+
+        .comment-form textarea {
+            height: 80px;
+            resize: vertical;
+        }
+
+        .comment-form button {
+            background: #7D0F1D;
+            color: #C6C6C6;
+            border: 1px solid #7D0F1D;
+            padding: 8px 16px;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        .comment-form button:hover {
+            background: #4B0E0E;
+        }

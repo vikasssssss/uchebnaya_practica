@@ -1,0 +1,46 @@
+        .content {
+            padding: 40px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #C6C6C6;
+        }
+
+        .actor-card {
+            background-color: rgba(61, 13, 10, 0.85);
+            border: 2px solid #7D0F1D;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .actor-card img {
+            width: 120px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid #7D0F1D;
+            flex-shrink: 0;
+        }
+
+        .actor-card .info {
+            flex: 1;
+        }
+
+        .actor-card h3 {
+            color: #A50000;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .actor-card p {
+            font-size: 1.1em;
+            line-height: 1.5;
+        }

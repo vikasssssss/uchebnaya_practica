@@ -1,0 +1,76 @@
+        .content {
+            display: flex;
+            align-items: center; 
+            justify-content: space-between;
+            padding: 40px;
+            max-width: 1600px;
+            margin: 0 auto;
+
+        }
+
+        .main-info {
+            flex: 1;
+            flex-shrink: 0; 
+            padding: 20px;
+            background-color: rgba(61, 13, 10, 0.85);
+            border: 2px solid #7D0F1D;
+            border-radius: 10px;
+            margin: 0 30px;
+        }
+
+        .main-info h2 {
+            color:#C6C6C6;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .main-info p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .side-image {
+            width: 300px;
+            min-width: 300px;
+            height: 550px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            opacity: 0;
+            transform: scale(0.8);
+            animation: baseSpin 7s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        /* Анимация для Стефана (против часовой стрелки = отрицательный угол) */
+        .left {
+            background-image: url('../фото/Stefan.jpg');
+            animation-name: spinCounterClockwise;
+        }
+
+        /* Анимация для Деймона (по часовой стрелке = положительный угол) */
+        .right {
+            background-image: url('../фото/Damon.jpg');
+            animation-name: spinClockwise;
+        }
+
+        @keyframes spinCounterClockwise {
+            from {
+                opacity: 0;
+                transform: rotate(-30deg) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: rotate(0deg) scale(1);
+            }
+        }
+
+        @keyframes spinClockwise {
+            from {
+                opacity: 0;
+                transform: rotate(30deg) scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: rotate(0deg) scale(1);
+            }
+        }

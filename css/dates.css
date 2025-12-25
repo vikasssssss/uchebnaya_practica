@@ -1,0 +1,87 @@
+.content {
+            padding: 40px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #C6C6C6;
+        }
+
+        .date-list {
+            background-color: rgba(61, 13, 10, 0.85);
+            border: 2px solid #7D0F1D;
+            border-radius: 10px;
+            padding: 20px;
+        }
+
+        .date-list ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .date-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #7D0F1D;
+        }
+
+        .date-list li:last-child {
+            border-bottom: none;
+        }
+
+       
+
+        .season-details {
+        margin-bottom: 15px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #7D0F1D;
+        }
+
+        .season-summary {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        padding: 10px 0;
+        color: #C6C6C6;
+        font-weight: bold;
+        list-style: none;
+        outline: none;
+        }
+
+        .season-summary::-webkit-details-marker {
+        display: none;
+        }
+        .season-summary::marker {
+        content: "";
+        }
+
+        .season-title {
+        text-align: left;
+        }
+
+        .season-summary::after {
+        content: "▼";
+        color: #C6C6C6;
+        font-size: 18px;
+        line-height: 1;
+        margin-left: 10px;
+        }
+
+        .season-details[open] .season-summary::after {
+        content: "▲";
+        }
+
+        .episodes {
+        list-style: none;
+        padding: 10px 0 0 20px;
+        margin: 0;
+        }
+        
+        .episodes li {
+        padding: 6px 0;
+        color: #C6C6C6;
+        font-size: 0.95em;
+        }
