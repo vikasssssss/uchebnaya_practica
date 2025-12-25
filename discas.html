@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обсуждение — Дневники вампиров</title>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/discas.css">
+</head>
+<body>
+
+    <div class="header">
+        <div class="logo">
+            <img src="../фото/Logo.png" alt="Дневники вампиров">
+        </div>
+        <div class="nav">
+            <a href="index.html">Главная</a>
+            <a href="actors.html">Актеры</a>
+            <a href="dates.html">Даты выхода</a>
+            
+            <a href="fanart.html">Фанарты</a>
+            <a href="fanfics.html">Фанфики</a>
+        </div>
+    </div>
+
+    <div class="content">
+        <h2> Обсуждения </h2>
+
+
+        <details class="pair-section" id="topic1">
+            <summary><h3>Любимый персонаж</h3></summary>
+            <p>Какой персонаж лучший по вашему мнению?</p>
+            <div class="comments-list" id="comments1">
+            </div>
+            <div class="comment-form">
+                <input type="text" placeholder="Ваше имя (можно оставить пустым)" id="name1">
+                <textarea placeholder="Ваш комментарий..." id="text1"></textarea>
+                <button onclick="addComment('1')">Добавить</button>
+            </div>
+        </details>
+
+        <details class="pair-section" id="topic2">
+            <summary><h3>Любимый сезон</h3></summary>
+            <p>Какой сезон вы считаете лучшим и почему?</p>
+            <div class="comments-list" id="comments2">
+            </div>
+            <div class="comment-form">
+                <input type="text" placeholder="Ваше имя (можно оставить пустым)" id="name2">
+                <textarea placeholder="Ваш комментарий..." id="text2"></textarea>
+                <button onclick="addComment('2')">Добавить</button>
+            </div>
+        </details>
+
+        <details class="pair-section" id="topic3">
+            <summary><h3>Любимая пара</h3></summary>
+            <p>В чьей паре больше химии?</p>
+            <div class="comments-list" id="comments3"></div>
+            <div class="comment-form">
+                <input type="text" placeholder="Ваше имя (можно оставить пустым)" id="name3">
+                <textarea placeholder="Ваш комментарий..." id="text3"></textarea>
+                <button onclick="addComment('3')">Добавить</button>
+            </div>
+        </details>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+
+
+    <script>
+        
+        
+            const firebaseConfig = {
+            apiKey: "AIzaSyAep8Uzj9l7M0XcO2w_Xu8zwkALr7g7bmQ",
+            authDomain: "tvdfans-discussion.firebaseapp.com",
+            databaseURL: "https://tvdfans-discussion-default-rtdb.europe-west1.firebasedatabase.app",
+            projectId: "tvdfans-discussion",
+            storageBucket: "tvdfans-discussion.firebasestorage.app",
+            messagingSenderId: "792744442368",
+            appId: "1:792744442368:web:ed62108f2a3e4c653f76e5"
+            };
+
+
+            
+
+            // Инициализация
+            try {
+                firebase.initializeApp(firebaseConfig);
+                const database = firebase.database();
+                console.log("✅ Firebase инициализирован");
+            } catch (e) {
+                console.error("❌ Ошибка инициализации:", e);
+            }
+
+            // Функция ДОЛЖНА быть глобальной, чтобы onclick работал
+            window.addComment = function(topicId) {
+                const nameInput = document.getElementById(`name${topicId}`);
+                const textInput = document.getElementById(`text${topicId}`);
+
+                if (!nameInput || !textInput) {
+                    console.error(`Поля для topic${topicId} не найдены!`);
+                    return;
+                }
+
+                const name = nameInput.value.trim() || 'Аноним';
+                const text = textInput.value.trim();
+
+                if (!text) {
+                    alert("Введите текст комментария!");
+                    return;
+                }
+
+                const db = firebase.database();
+                const newCommentRef = db.ref(`comments/topic${topicId}`).push();
+
+                newCommentRef.set({
+                    author: name,
+                    text: text,
+                    // Убираем timestamp, чтобы упростить (он не обязателен)
+                })
+                .then(() => {
+                    console.log("✅ Комментарий отправлен");
+                    nameInput.value = '';
+                    textInput.value = '';
+                })
+                .catch(error => {
+                    console.error("❌ Ошибка отправки:", error);
+                    alert("Не удалось отправить комментарий. Откройте консоль (F12) и проверьте ошибки.");
+                });
+            };
+
+            // Загрузка комментариев
+            document.addEventListener('DOMContentLoaded', () => {
+                const db = firebase.database();
+                ['1', '2', '3'].forEach(topicId => {
+                    const commentsRef = db.ref(`comments/topic${topicId}`);
+                    const list = document.getElementById(`comments${topicId}`);
+                    if (!list) return;
+
+                    list.innerHTML = ''; // очищаем
+
+                    commentsRef.on('child_added', (snapshot) => {
+                        const data = snapshot.val();
+                        if (!data?.text) return;
+
+                        const div = document.createElement('div');
+                        div.className = 'comment';
+                        div.innerHTML = `<span class="comment-author">${data.author || 'Аноним'}:</span> ${data.text}`;
+                        list.appendChild(div);
+                    });
+                });
+            });
+    </script>
+    
+
+</body>
+</html>
